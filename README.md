@@ -2,7 +2,7 @@
 
 ## Lista de atividades
 
-- [ ] Conectar o cliente MQTT móvel com o Node-Red por meio do broker MQTT
+- [x] Conectar o cliente MQTT móvel com o Node-Red por meio do broker MQTT
 
 - [ ] Adicionar a geração e tratamento de eventos (fictícios ou reais) de vários tipos (ex.: temperatura, luminosidade,...) no fluxo em Node-Red e monitorar os eventos por meio da aplicação móvel, por exemplo, utilizando alguma visualização simples (lista de valores, gráfico simples etc.)
 
