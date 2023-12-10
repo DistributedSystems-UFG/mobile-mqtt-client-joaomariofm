@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String brokerURI = "54.234.202.106";
+    public static final String brokerURI = "23.21.17.173";
 
     Activity thisActivity;
 
@@ -44,6 +45,35 @@ public class MainActivity extends AppCompatActivity {
         simpleList.setAdapter(arrayAdapter);
 
         this.topicSubscription();
+    }
+
+    public void publishMaxValues(View view) {
+        String maxTemperatureTopic = "/set-max-temperature";
+        String maxLuminosityTopic = "/set-max-luminosity";
+
+        EditText maxTemp = (EditText) findViewById(R.id.editMaxTemp);
+        EditText maxLum = (EditText) findViewById(R.id.editMaxLum);
+
+        Mqtt5BlockingClient client = Mqtt5Client.builder()
+                .identifier(UUID.randomUUID().toString())
+                .serverHost(brokerURI)
+                .buildBlocking();
+
+        client.connect();
+
+        client.publishWith()
+                .topic(maxTemperatureTopic)
+                .qos(MqttQos.AT_LEAST_ONCE)
+                .payload(maxTemp.getText().toString().getBytes())
+                .send();
+
+        client.publishWith()
+                .topic(maxLuminosityTopic)
+                .qos(MqttQos.AT_LEAST_ONCE)
+                .payload(maxLum.getText().toString().getBytes())
+                .send();
+
+        client.disconnect();
     }
 
     public void topicSubscription() {
@@ -76,7 +106,9 @@ public class MainActivity extends AppCompatActivity {
                 .callback(msg -> {
                     thisActivity.runOnUiThread(new Runnable() {
                         public void run() {
-                            arrayAdapter.insert(new String(msg.getPayloadAsBytes(), StandardCharsets.UTF_8), arrayAdapter.getCount());
+                            String message = new String(msg.getPayloadAsBytes(), StandardCharsets.UTF_8);
+
+                            arrayAdapter.insert(message, arrayAdapter.getCount());
                             arrayAdapter.notifyDataSetChanged();
                         }
                     });
