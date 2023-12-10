@@ -4,6 +4,6 @@
 
 - [x] Conectar o cliente MQTT móvel com o Node-Red por meio do broker MQTT
 
-- [ ] Adicionar a geração e tratamento de eventos (fictícios ou reais) de vários tipos (ex.: temperatura, luminosidade,...) no fluxo em Node-Red e monitorar os eventos por meio da aplicação móvel, por exemplo, utilizando alguma visualização simples (lista de valores, gráfico simples etc.)
+- [x] Adicionar a geração e tratamento de eventos (fictícios ou reais) de vários tipos (ex.: temperatura, luminosidade,...) no fluxo em Node-Red e monitorar os eventos por meio da aplicação móvel, por exemplo, utilizando alguma visualização simples (lista de valores, gráfico simples etc.)
 
-- [ ] Também permitir que o usuário do aplicativo móvel gere eventos, que serão recebidos e tratados pelo fluxo no Node-Red e que poderão interferir no tratamento dos demais eventos. Ex.: o usuário usar esse evento gerado pelo app móvel para informar a faixa de valores de temperatura que precisa ser monitorada (ou seja, temperaturas fora daquela faixa não precisam ser informadas)
+- [x] Também permitir que o usuário do aplicativo móvel gere eventos, que serão recebidos e tratados pelo fluxo no Node-Red e que poderão interferir no tratamento dos demais eventos. Ex.: o usuário usar esse evento gerado pelo app móvel para informar a faixa de valores de temperatura que precisa ser monitorada (ou seja, temperaturas fora daquela faixa não precisam ser informadas)
